@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>API de Alfajores Argentinos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .card {
+            border-radius: 1rem;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, .05);
+        }
+
+        .section-title {
+            border-bottom: 2px solid #0d6efd;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container py-5">
+        <header class="mb-5 text-center">
+            <h1 class="fw-bold">API de Alfajores Argentinos</h1>
+            <p class="text-muted">Documentación de mi API</p>
+        </header>
+
+        <section class="mb-5">
+            <h2 class="section-title h4 text-primary">Autenticación JWT</h2>
+            <p>Para acceder a rutas protegidas, enviá tu token en el header:</p>
+            <pre><code>Authorization: Bearer &lt;tu_token&gt;</code></pre>
+        </section>
+
+        <section class="mb-5">
+            <h4>Conseguí un token:</h4>
+            <p>Para acceder a rutas protegidas, necesitás un token JWT.</p>
+            <p>Para generarlo:</p>
+            <ol>
+                <li>Ejecutá el archivo <code>generar.js</code> con Node.js.</li>
+                <li>Copiá el token que aparece en la consola.</li>
+                <li>Usalo en tus peticiones como header:
+                    <br><code>Authorization: Bearer &lt;el_token_que_hiciste&gt;</code>
+                </li>
+            </ol>
+        </section>
+
+        <section class="mb-5">
+            <h2 class="section-title h4 text-primary">Ejemplos de JSON para pruebas</h2>
+            <div class="card p-4 mb-4">
+                <h5 class="mb-3 text-primary">POST /api/fabricantes</h5>
+                <pre><code>{
+  "nombre": "Guaymallén",
+  "provincia": "Buenos Aires",
+  "antiguedad": 60
+}</code></pre>
+            </div>
+            <div class="card p-4">
+                <h5 class="mb-3 text-primary">POST /api/alfajores</h5>
+                <pre><code>{
+  "nombre": "Triple Negro",
+  "relleno": "dulce de leche",
+  "banado": true,
+  "precio": 1500,
+  "calorias": 400,
+  "fabricanteId": "ACÁ_PONÉS_EL_ID_DEL_FABRICANTE"
+}</code></pre>
+            </div>
+        </section>
+
+        <section class="mb-5">
+            <h2 class="section-title h4 text-primary">Endpoints</h2>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="card p-4">
+                        <h5 class="mb-3 text-primary">/api/fabricantes</h5>
+                        <ul class="list-unstyled">
+                            <li><strong>GET</strong> → Obtener todos</li>
+                            <li><strong>GET</strong> /:id → Obtener uno</li>
+                            <li><strong>POST</strong> → Crear nuevo</li>
+                            <li><strong>PUT</strong> /:id → Actualizar</li>
+                            <li><strong>DELETE</strong> /:id → Eliminar</li>
+                            <li><strong>GET</strong> ?nombre= → Buscar por nombre (puede ser sin escribirlo entero)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card p-4">
+                        <h5 class="mb-3 text-primary">/api/alfajores</h5>
+                        <ul class="list-unstyled">
+                            <li><strong>GET</strong> → Obtener todos</li>
+                            <li><strong>GET</strong> /:id → Obtener uno</li>
+                            <li><strong>POST</strong> → Crear nuevo</li>
+                            <li><strong>PUT</strong> /:id → Actualizar</li>
+                            <li><strong>DELETE</strong> /:id → Eliminar</li>
+                            <li><strong>GET</strong> ?relleno=&... → Filtrar por relleno</li>
+                            <li><strong>GET</strong> ?banado=true → Filtrar por bañado</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="card p-4">
+                        <h5 class="mb-3 text-primary">/api/protegida</h5>
+                        <ul class="list-unstyled">
+                            <li><strong>GET</strong> → Requiere token válido</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-5">
+            <h2 class="section-title h4 text-primary">Validaciones</h2>
+            <p>Los campos requeridos deben enviarse correctamente. La API valida:</p>
+            <ul>
+                <li>Tipos de datos</li>
+                <li>Existencia de campos obligatorios</li>
+                <li>Relación válida entre alfajores y fabricantes</li>
+            </ul>
+        </section>
+
+        <footer class="text-center pt-4 border-top mt-5">
+            <p class="mb-1">Alumno: Juan Pedro Di meola</p>
+            <p class="mb-1">Aplicaciones Híbridas - Prof. Jonathan Cruz</p>
+            <p class="mb-0">DWM4AP - Escuela Da Vinci</p>
+        </footer>
+    </div>
+</body>
+
+</html>
